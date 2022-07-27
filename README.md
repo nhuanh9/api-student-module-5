@@ -4,21 +4,20 @@
 ```$ node app.js```
 - The server listens at port 3000
 # APIs
-#### Book model
+#### Student model
     {
         id: 1,
-        title: 'Clean Code',
-        author: 'Robert C. Martin',
-        description: 'Clean Code Book'
-    }
-
-#### Getting all books
-```GET http://localhost:3000/books```
-#### Getting a book by id
-```GET http://localhost:3000/books/1```
-#### Creating a book
-```POST http://localhost:3000/books```
-#### Deleting a book by id
-```DELETE http://localhost:3000/books/1```
-#### Updating a book by id
-```PUT http://localhost:3000/books/1```
+        name: 'Vũ Đình Sơn',
+        description: 'Xây thành phố, làm bài thi không đạt',
+        action: 'Xem xét'
+    }, 
+#### Getting all students
+```GET http://localhost:3000/students```
+#### Getting a student by id
+```GET http://localhost:3000/students/1```
+#### Creating a student
+```POST http://localhost:3000/students```
+#### Deleting a student by id
+```DELETE http://localhost:3000/students/1```
+#### Updating a student by id
+```PUT http://localhost:3000/students/1```
