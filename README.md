@@ -7,18 +7,18 @@
 #### Book model
     {
         id: 1,
-        title: 'Clean Code',
-        author: 'Robert C. Martin',
+        name: 'Clean Code',
+        price: 1000,
         description: 'Clean Code Book'
     }
 
-#### Getting all books
-```GET http://localhost:3000/books```
-#### Getting a book by id
-```GET http://localhost:3000/books/1```
-#### Creating a book
-```POST http://localhost:3000/books```
-#### Deleting a book by id
-```DELETE http://localhost:3000/books/1```
-#### Updating a book by id
-```PUT http://localhost:3000/books/1```
+#### Getting all products
+```GET http://localhost:3000/products```
+#### Getting a product by id
+```GET http://localhost:3000/products/1```
+#### Creating a product
+```POST http://localhost:3000/products```
+#### Deleting a product by id
+```DELETE http://localhost:3000/products/1```
+#### Updating a product by id
+```PUT http://localhost:3000/products/1```
