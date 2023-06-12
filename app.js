@@ -10,29 +10,34 @@ app.listen(3000, () => {
 const students = [
     {
         id: 1,
-        name: 'Vũ Đình Sơn',
-        description: 'Xây thành phố, làm bài thi không đạt',
-        action: 'Xem xét'
-    },   {
+        name: 'Chu Xuân Hiếu',
+        description: 'Đi gội đầu lâu, hay ngủ gật',
+        action: 'Xem xét',
+        score: 6
+    }, {
         id: 2,
-        name: 'Đoàn Thị Hường',
-        description: 'Nghỉ nhiều, làm bài thi không đạt',
-        action: 'Xem xét'
-    },    {
+        name: 'Nguyễn Thị Quỳnh',
+        description: 'Nói chuyện nhiều',
+        action: 'Xem xét',
+        score: 7
+    }, {
         id: 3,
-        name: 'Vũ Thanh Tùng',
-        description: 'Thường xuyên ốm, nghỉ không báo cho lớp',
-        action: 'Xem xét'
-    },{
+        name: 'Trần Văn Hiệp',
+        description: 'Thiếu tập trung, chưa tích cực khi học',
+        action: 'Xem xét',
+        score: 4
+    }, {
         id: 4,
-        name: 'Nguyễn Trung Kiên',
-        description: 'Nghỉ quá nhiều, làm bài thi đạt',
-        action: 'Xem xét'
-    },{
+        name: 'Bui Huu Nghia',
+        description: 'Thiếu tập trung, chưa tích cực khi học',
+        action: 'Xem xét',
+        score: 5
+    }, {
         id: 5,
-        name: 'Hoàng Văn Mạnh',
-        description: 'Ngủ nhiều, làm bài thi đạt',
-        action: 'Xem xét'
+        name: 'Trương Hoàng Anh',
+        description: 'Đi ra ngoài lâu',
+        action: 'Xem xét',
+        score: 5
     },
 ];
 
@@ -42,7 +47,7 @@ app.get("/students", (req, res, next) => {
 app.get("/students/:id", (req, res, next) => {
     const id = +req.params.id;
     const index = findStudentIndex(id);
-    if(index !== -1) {
+    if (index !== -1) {
         res.json(students[index]);
     } else {
         res.status(404).json({message: 'Not found'});
@@ -53,7 +58,8 @@ app.post("/students", (req, res, next) => {
         id: (new Date()).getTime(),
         name: req.body.name,
         description: req.body.description,
-        action: req.body.action
+        action: req.body.action,
+        score: req.body.score,
     };
     students.push(student);
     res.json(student);
@@ -61,7 +67,7 @@ app.post("/students", (req, res, next) => {
 app.delete("/students/:id", (req, res, next) => {
     const id = +req.params.id;
     const index = findStudentIndex(id);
-    if(index !== -1) {
+    if (index !== -1) {
         students.splice(index, 1);
         res.json({message: 'Student deleted', id: id});
     } else {
@@ -72,11 +78,12 @@ app.delete("/students/:id", (req, res, next) => {
 app.put("/students/:id", (req, res, next) => {
     const id = +req.params.id;
     const index = findStudentIndex(id);
-    if(index !== -1) {
+    if (index !== -1) {
         const student = students[index];
         student.name = req.body.name;
         student.action = req.body.action;
         student.description = req.body.description;
+        score: req.body.score,
         res.json(student);
     } else {
         res.status(404).json({message: 'Not found'});
@@ -84,8 +91,8 @@ app.put("/students/:id", (req, res, next) => {
 });
 
 function findStudentIndex(id) {
-    for(let i = 0; i < students.length; i++) {
-        if(students[i].id === id) {
+    for (let i = 0; i < students.length; i++) {
+        if (students[i].id === id) {
             return i;
         }
     }
